@@ -6,10 +6,12 @@ use app\models\Meal;
 use app\models\Beverage;
 
 class Order {
+    private int $id;
     private int $tableNumber;
-    private array $products;
+    private array $products = [];
 
-    function __construct(int $tableNumber) {
+    function __construct(int $id, int $tableNumber) {
+        $this->id = $id;
         $this->tableNumber = $tableNumber;
     }
 
@@ -22,7 +24,19 @@ class Order {
         $this->products = array_merge($this->products, $meal->getSideDishes());
     }
 
+    public function addFood(Food $food) {
+        $this->products[] = $food;
+    }
+
     public function getProducts() : array {
         return $this->products;
+    }
+
+    public function getId() : int {
+        return $this->id;
+    }
+
+    public function getTableNumber() : int {
+        return $this->tableNumber;
     }
 }

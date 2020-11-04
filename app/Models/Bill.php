@@ -25,4 +25,12 @@ class Bill {
     public function getFinalPrice() {
         return $this->finalPrice;
     }
+
+    public function getOrder() {
+        return $this->order;
+    }
+
+    public function getTableNumber() {
+        return $this->order->getTableNumber();
+    }
 }
